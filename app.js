@@ -26,6 +26,16 @@ fetch('words.txt')
             nextPos[0]++;
         } else if ( key == 'ENTER' && nextPos[0] == 5 ) {
             if ( words.includes(guess.toLowerCase()) ) {
+
+                for ( let i = 0; i < guess.length; i++ ) {
+                    const testCell = document.querySelector(`.container td[data-x="${i}"][data-y="${nextPos[1]}"]`);
+                    if ( randomWord.charAt(i) == guess.charAt(i).toLowerCase() ) {
+                        testCell.classList.add('correct-letter');
+                    } else {
+                        console.log(randomWord.charAt(i), 'pole õige koha peal!');
+                    }
+                }
+
                 nextPos[0] = 0;
                 nextPos[1]++;
                 guess = '';
