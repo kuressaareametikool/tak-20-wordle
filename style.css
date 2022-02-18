@@ -26,3 +26,7 @@ table td {
 .correct-letter {
     background-color: limegreen;
 }
+
+.present-letter {
+    background-color: wheat;
+}

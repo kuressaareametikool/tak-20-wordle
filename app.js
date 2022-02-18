@@ -27,10 +27,22 @@ fetch('words.txt')
         } else if ( key == 'ENTER' && nextPos[0] == 5 ) {
             if ( words.includes(guess.toLowerCase()) ) {
 
+                const correctWord = randomWord.split('');
+
                 for ( let i = 0; i < guess.length; i++ ) {
                     const testCell = document.querySelector(`.container td[data-x="${i}"][data-y="${nextPos[1]}"]`);
-                    if ( randomWord.charAt(i) == guess.charAt(i).toLowerCase() ) {
+                    if ( correctWord[i] == guess.charAt(i).toLowerCase() ) {
                         testCell.classList.add('correct-letter');
+                        correctWord[i] = '*';
+                    }
+                }
+                for ( let i = 0; i < guess.length; i++ ) {
+                    console.log(correctWord);
+
+                    testCell = document.querySelector(`.container td[data-x="${i}"][data-y="${nextPos[1]}"]`);
+                    if ( correctWord.includes(guess.charAt(i).toLowerCase()) ) {
+                        testCell.classList.add('present-letter');
+                        correctWord[correctWord.indexOf(guess.charAt(i).toLowerCase())] = '*';
                     } else {
                         console.log(randomWord.charAt(i), 'pole õige koha peal!');
                     }
