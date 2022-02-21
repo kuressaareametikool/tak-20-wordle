@@ -25,7 +25,7 @@ fetch('words.txt')
             nextCell.innerText = key;
             nextPos[0]++;
         } else if ( key == 'ENTER' && nextPos[0] == 5 ) {
-            // if ( words.includes(guess.toLowerCase()) ) {
+            if ( words.includes(guess.toLowerCase()) ) {
 
                 const correctWord = randomWord.split('');
 
@@ -52,9 +52,9 @@ fetch('words.txt')
                 nextPos[0] = 0;
                 nextPos[1]++;
                 guess = '';
-            // } else {
-            //     messageDiv.innerText = 'Pole sõna!';
-            // }
+            } else {
+                messageDiv.innerText = 'Pole sõna!';
+            }
         } else if ( key == 'BACKSPACE' && nextPos[0] > 0 ) {
             nextPos[0] -= 1;
             guess = guess.slice(0, -1);
