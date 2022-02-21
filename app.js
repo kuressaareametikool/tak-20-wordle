@@ -25,7 +25,7 @@ fetch('words.txt')
             nextCell.innerText = key;
             nextPos[0]++;
         } else if ( key == 'ENTER' && nextPos[0] == 5 ) {
-            if ( words.includes(guess.toLowerCase()) ) {
+            // if ( words.includes(guess.toLowerCase()) ) {
 
                 const correctWord = randomWord.split('');
 
@@ -36,24 +36,25 @@ fetch('words.txt')
                         correctWord[i] = '*';
                     }
                 }
+
                 for ( let i = 0; i < guess.length; i++ ) {
-                    console.log(correctWord);
+                    const letter = guess.charAt(i).toLowerCase();
 
                     testCell = document.querySelector(`.container td[data-x="${i}"][data-y="${nextPos[1]}"]`);
-                    if ( correctWord.includes(guess.charAt(i).toLowerCase()) ) {
+                    if ( correctWord.includes(letter) && !testCell.classList.contains('correct-letter') ) {
                         testCell.classList.add('present-letter');
-                        correctWord[correctWord.indexOf(guess.charAt(i).toLowerCase())] = '*';
+                        correctWord[correctWord.indexOf(letter)] = '*';
                     } else {
-                        console.log(randomWord.charAt(i), 'pole õige koha peal!');
+                        testCell.classList.add('missing-letter');
                     }
                 }
 
                 nextPos[0] = 0;
                 nextPos[1]++;
                 guess = '';
-            } else {
-                messageDiv.innerText = 'Pole sõna!';
-            }
+            // } else {
+            //     messageDiv.innerText = 'Pole sõna!';
+            // }
         } else if ( key == 'BACKSPACE' && nextPos[0] > 0 ) {
             nextPos[0] -= 1;
             guess = guess.slice(0, -1);

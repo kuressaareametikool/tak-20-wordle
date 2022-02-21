@@ -4,4 +4,4 @@ paber
 pudel
 kruus
 ploom
-aster
+kiisu

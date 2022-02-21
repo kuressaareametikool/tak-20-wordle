@@ -23,10 +23,14 @@ table td {
     border: 1px solid black;
 }
 
-.correct-letter {
-    background-color: limegreen;
+.missing-letter {
+    background-color: gray;
 }
 
 .present-letter {
     background-color: wheat;
+}
+
+.correct-letter {
+    background-color: limegreen;
 }
