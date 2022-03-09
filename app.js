@@ -81,10 +81,10 @@ function testWord () {
     }
 }
 
-function showAnswer  ( word ) {
-    fetch('https://cors-anywhere.herokuapp.com/http://www.eki.ee/dict/ekss/index.cgi?Z=json&Q=+' + word)
-    .then(res => res.json())
-    .then(data => {
-        messageDiv.innerHTML = 'Õige sõna: ' + randomWord.toUpperCase() + '<span class="tooltiptext">' + data.result + '</span>';
+function showAnswer ( word ) {
+    fetch('http://localhost:8080/?q=' + word)
+    .then(res => res.text())
+    .then(definition => {
+        messageDiv.innerHTML = 'Õige sõna: ' + randomWord.toUpperCase() + '<span class="tooltiptext">' + definition + '</span>';
     });
 }
